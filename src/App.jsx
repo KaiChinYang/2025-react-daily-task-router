@@ -1,20 +1,53 @@
 import "./App.css";
-import { HashRouter, NavLink, Link, Routes, Route } from "react-router-dom";
+import {
+  HashRouter,
+  NavLink,
+  Link,
+  Routes,
+  Route,
+  useNavigate,
+  useLocation,
+} from "react-router-dom";
 
 const Home = () => {
   return <p>這是首頁</p>;
 };
 const Todo = () => {
-  return <p>這是 Todo 頁面</p>;
+  return (
+    <div>
+      <p>這是 Todo 頁面</p>
+      <LogOut />
+    </div>
+  );
 };
 const Login = () => {
-  return <p>這是登入頁面</p>;
+  const Location = useLocation();
+  return (
+    <div>
+      <p>這是登入頁面</p>
+      {JSON.stringify(Location)}
+      {Location.state ? <p>{Location.state.id}</p> : <></>}
+    </div>
+  );
 };
 const Register = () => {
   return <p>這是註冊頁面</p>;
 };
 const PAPAYA = () => {
   return <p>這是 PAPAYA 的地盤</p>;
+};
+const LogOut = () => {
+  const navigate = useNavigate();
+  return (
+    <button
+      type="button"
+      onClick={() =>
+        navigate("/login", { state: { id: 123,dog:true },replace: true})
+      }
+    >
+      登出
+    </button>
+  );
 };
 
 function App() {
