@@ -55,9 +55,12 @@ const Post = ()=>{
   return (
     <div>
       <p>這是Post頁面</p>
-      <Outlet/>
+      <NavLink to="/post/PAPAYAKG">
+        <p>拜訪Post 詳細頁面</p>
+      </NavLink>
+      <Outlet />
     </div>
-  )
+  );
 }
 const PostId = ()=>{
   const {postId} = useParams();
@@ -83,8 +86,8 @@ function App() {
           <NavLink to="/papaya">
             <p>拜訪PAPAYA</p>
           </NavLink>
-          <NavLink to="/post/PAPAYAKG">
-            <p>Post 詳細頁面</p>
+          <NavLink to="/post">
+            <p>Post頁面</p>
           </NavLink>
         </div>
         {/* Routes, Route 練習區 */}

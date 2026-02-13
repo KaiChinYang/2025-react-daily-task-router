@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   base:
     process.env.NODE_ENV === "production"
-      ? "/2023-react-daily-task-router/"
+      ? "/2025-react-daily-task-router/"
       : "/",
   plugins: [react()],
 });
