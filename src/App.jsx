@@ -7,6 +7,8 @@ import {
   Route,
   useNavigate,
   useLocation,
+  Outlet,
+  useParams
 } from "react-router-dom";
 
 const Home = () => {
@@ -42,14 +44,25 @@ const LogOut = () => {
     <button
       type="button"
       onClick={() =>
-        navigate("/login", { state: { id: 123,dog:true },replace: true})
+        navigate("/login", { state: { id: 123, dog: true }, replace: true })
       }
     >
       登出
     </button>
   );
 };
-
+const Post = ()=>{
+  return (
+    <div>
+      <p>這是Post頁面</p>
+      <Outlet/>
+    </div>
+  )
+}
+const PostId = ()=>{
+  const {postId} = useParams();
+  return <p>這是 PostId 頁面，postId 是 {postId}</p>;
+}
 function App() {
   return (
     <div className="container">
@@ -70,6 +83,9 @@ function App() {
           <NavLink to="/papaya">
             <p>拜訪PAPAYA</p>
           </NavLink>
+          <NavLink to="/post/PAPAYAKG">
+            <p>Post 詳細頁面</p>
+          </NavLink>
         </div>
         {/* Routes, Route 練習區 */}
         <Routes>
@@ -78,6 +94,9 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/todo" element={<Todo />} />
           <Route path="/papaya" element={<PAPAYA />} />
+          <Route path="/post" element={<Post />}>
+            <Route path=":postId" element={<PostId />} />
+          </Route>
           <Route
             path="*"
             element={
